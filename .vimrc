@@ -29,7 +29,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 " =============== Appearance  ==================
-Plugin 'itchyny/lightline.vim'
+Plugin 'itchyne/lightline.vim'
+Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
@@ -44,7 +45,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-
+set clipboard=unnamed
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
@@ -55,7 +56,7 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
 
@@ -136,6 +137,7 @@ set smartcase       " ...unless we type a capital
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -146,7 +148,12 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termcolors=16
 colorscheme solarized
+"+++++ AIRLINE +++++
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 "+++++ LightLine +++++
+"
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -158,15 +165,14 @@ let g:lightline = {
       \   'readonly': 'MyReadonly',
       \   'filename': 'MyFilename',
       \ },
-      \ 'separator': { 'left': '▶', 'right': '▶' },
-      \ 'subseparator': { 'left': '▶', 'right': '▶' },
+      \ 'separator': { 'left': '▶', 'right': '◀ ' },
+      \ 'subseparator': { 'left': '»', 'right': '«' },
       \ }
-
 function! MyReadonly()
   if &filetype == "help"
     return ""
   elseif &readonly
-    return "▶"
+    return ""
   else
     return ""
   endif
@@ -175,7 +181,7 @@ endfunction
 function! MyFugitive()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? '▶'._ : ''
+    return strlen(_) ? 'Ξ '._ : ''
   endif
   return ''
 endfunction
@@ -185,6 +191,7 @@ function! MyFilename()
         \ ('' != expand('%') ? expand('%') : '[NoName]')
 endfunction
 set laststatus=2
+set lazyredraw
 
 " +++++ CamelCaseMotion+++++
 map W <Plug>CamelCaseMotion_w
@@ -348,6 +355,7 @@ imap <C-a> <esc>wa
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
+map ,n :NERDTreeClose<CR>
 
 "Move back and forth hrough previous and next buffers
 "with ,z and ,x
@@ -387,7 +395,13 @@ nnoremap <silent> ss <C-w>s
 " ============================
 " Shortcuts for everyday tasks
 " ============================
+" Get rid of trailing whitespace
+nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
@@ -416,10 +430,10 @@ map <silent> ,hp :!open -a 'Google Chrome' %<CR><CR>
 function! CloseWindowOrKillBuffer()
  let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
 
-" Keep NERD TREE OPEN 
+" Keep NERD TREE OPEN
 "  if matchstr(expand("%"), 'NERD') == 'NERD'
 "    wincmd c
-"    return 
+"    return
 "  endif
 
 if number_of_windows_to_this_buffer > 1
@@ -430,3 +444,6 @@ endif
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
+let wgetstr = "localhost:8080" . expand("%:p:h") . "\""
+autocmd BufWritePost *.php,*.css silent exe wgetstr
