@@ -8,13 +8,13 @@ call vundle#begin()
 
 " =============== Core  ==================
 Plugin 'VundleVim/Vundle.vim'
-
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
 " =============== Improvements ==================
-" Plugin 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet'
 Plugin 'justinmk/vim-sneak'
 Plugin 'bkad/CamelCaseMotion'
@@ -29,7 +29,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 " =============== Appearance  ==================
-Plugin 'itchyne/lightline.vim'
+Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'floobits/floobits-neovim'
