@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
@@ -62,7 +63,11 @@ syntax on
 " the plugins.
 let mapleader=","
 
-
+" Draw Line to see 80 character limit
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(400,999),",")
+set wrap
+set textwidth=80
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -356,8 +361,8 @@ imap <C-a> <esc>wa
 
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
-nnoremap <silent> <C-\> :NERDTreeFind<CR>:vertical res 30<CR>
-map ,n :NERDTreeClose<CR>
+nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 30<CR>
+map ,n :NERDTreeTabsToggle<CR>
 
 "Move back and forth hrough previous and next buffers
 "with ,z and ,x
@@ -448,5 +453,3 @@ endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
-let wgetstr = "localhost:8080" . expand("%:p:h") . "\""
-autocmd BufWritePost *.php,*.css silent exe wgetstr
