@@ -66,8 +66,8 @@ let mapleader=","
 " Draw Line to see 80 character limit
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(400,999),",")
-set wrap
-set textwidth=80
+set wrap linebreak nolist
+
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -99,8 +99,6 @@ filetype indent on
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
