@@ -31,6 +31,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 " =============== Appearance  ==================
 Plugin 'itchyny/lightline.vim'
+
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'floobits/floobits-neovim'
@@ -66,8 +67,9 @@ let mapleader=","
 " Draw Line to see 80 character limit
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(400,999),",")
-set wrap linebreak nolist
-
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
