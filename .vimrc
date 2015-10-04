@@ -15,6 +15,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
 " =============== Improvements ==================
+"
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet'
 Plugin 'justinmk/vim-sneak'
