@@ -82,4 +82,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias "zshrc=vim ~/.zshrc"
 alias 'vimrc=vim ~/.vimrc'
-alias 'hack=vim ~/HackReactor/'
+alias 'hack=vim ~/HackReactor/precourse/'
+alias 'snips=vim ~/.vim/bundle/mysnipps/'
