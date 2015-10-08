@@ -2,6 +2,12 @@
 set nocompatible
 filetype off
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+
 " =============== Vundle Initialization ===============
 set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -59,11 +65,6 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
 
 " Draw Line to see 80 character limit
 let &colorcolumn=join(range(81,999),",")
@@ -71,6 +72,10 @@ let &colorcolumn="80,".join(range(400,999),",")
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Highlight the line that cursor curently on
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -149,7 +154,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 25
 "+++++ Solarized +++++
 set background=dark
 let g:solarized_visibility = "high"
