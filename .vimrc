@@ -15,7 +15,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
 " =============== Improvements ==================
-"
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/neosnippet'
 Plugin 'justinmk/vim-sneak'
@@ -374,11 +374,17 @@ nnoremap <silent> ,x :bn<CR>
 " Window/Tab/Split Manipulation
 " ==============================
 " Move between split windows by using the four directions H, L, K, J
-" NOTE: This has moved to vim/settings/vim-tmux-navigator.vim.
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-k> <C-w>k
-nnoremap <C-j> <C-w>j
+" NOTE: Using vim/settings/vim-tmux-navigator.vim.
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-j> <C-w>j
 
 nnoremap ,,w <C-w>w
 " Make gf (go to file) create the file, if not existent
