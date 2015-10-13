@@ -32,6 +32,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'bonsaiben/bootstrap-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/YankRing.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " =============== Language and Syntax ==================
 Plugin 'scrooloose/syntastic'
 Plugin 'jelera/vim-javascript-syntax'
@@ -287,7 +289,9 @@ nmap F <Plug>Sneak_S
 nmap <Space> <Plug>SneakForward
 "
 "++++Syntastic+++++
-
+"disable folding per vim-markdown
+let g:vim_markdown_folding_disabled=1
+"=========Continue================
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
