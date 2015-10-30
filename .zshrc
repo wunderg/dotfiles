@@ -1,6 +1,21 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
+# Setting Keypad info:
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+bindkey -s "^[Op" "0"
+bindkey -s "^[OX" "="
+bindkey -s "^[Oo" "/"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Ok" “+”
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -44,7 +59,6 @@ ZSH_THEME="sorin"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -80,7 +94,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias "zshrc=vim ~/.zshrc"
-alias 'vimrc=vim ~/.vimrc'
-alias 'hack=vim ~/HackReactor/precourse/'
-alias 'snips=vim ~/.vim/bundle/mysnipps/'
+alias "zshrc=nvim ~/.zshrc"
+alias 'vimrc=nvim ~/.vimrc'
+alias 'hack=nvim ~/HackReactor/precourse/'
+alias 'snips=nvim ~/.vim/bundle/mysnipps/'
+alias 'go=git checkout'

@@ -14,16 +14,19 @@ call vundle#begin()
 
 " =============== Core  ==================
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs.git'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/neocomplete'
+" Plugin 'Shougo/neocomplete'
 Plugin 'tpope/vim-fugitive'
+
 " =============== Improvements ==================
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
+Plugin 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
+" Plugin 'Shougo/neosnippet'
 Plugin 'justinmk/vim-sneak'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'easymotion/vim-easymotion'
@@ -34,17 +37,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
 " =============== Language and Syntax ==================
 Plugin 'scrooloose/syntastic'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
+
 " =============== Appearance  ==================
 Plugin 'itchyny/lightline.vim'
-
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'floobits/floobits-neovim'
-
 
 call vundle#end()
 
@@ -59,14 +62,12 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed
+set undofile
 " This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
 "turn on syntax highlighting
 syntax on
-
 
 " Draw Line to see 80 character limit
 let &colorcolumn=join(range(81,999),",")
@@ -109,7 +110,6 @@ filetype indent on
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
-
 " ================ Folds ============================
 
 set foldmethod=indent   "fold based on indent
@@ -147,6 +147,7 @@ set smartcase       " ...unless we type a capital
 
 
 " ================ Plugins settings  ===========================
+
 "+++++ NERDTREE+++++
 " Open nerdTree when no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -156,19 +157,21 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 25
+let g:NERDTreeWinSize = 15
+
 "+++++ Solarized +++++
 set background=dark
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termcolors=16
 colorscheme solarized
+
 "+++++ AIRLINE +++++
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-"+++++ LightLine +++++
 "
+"+++++ LightLine +++++
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -228,24 +231,26 @@ let g:EasyMotion_keys='asdfjkoweriop'
 nmap ,<ESC> ,,w
 nmap ,<S-ESC> ,,b
 
-" ++++NeoComplete++++
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_camel_case = 1
-let g:neocomplete#enable_smart_case = 1
+"++++++ UltiSnipps +++++++
 
-" Default # of completions is 100 that little to much!
-let g:neocomplete#max_list = 25
-
-" Set the minimun syntax keyword lenght
-let g:neocomplete#auto_completion_start_length = 1
-
-inoremap <C-Space> <C-n>
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
- let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" " ++++NeoComplete++++
+" let g:acp_enableAtStartup = 0
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_camel_case = 1
+" let g:neocomplete#enable_smart_case = 1
+"
+" " Default # of completions is 100 that little to much!
+" let g:neocomplete#max_list = 25
+"
+" " Set the minimun syntax keyword lenght
+" let g:neocomplete#auto_completion_start_length = 1
+"
+" inoremap <C-Space> <C-n>
+" " Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+"  let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 "Enable Omni compltetion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -255,29 +260,41 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" +++++NEOSNIPPET+++++
-" Plugin key-mappings.
-imap <C-K>     <Plug>(neosnippet_expand_or_jump)
-smap <C-K>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-K>     <Plug>(neosnippet_expand_target)
+" ++++++YouCompleteMe+++++++
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" SuperTab like snippets behavior.
- imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" let g:UltiSnipsJumpBackwardTrigger = "<tab>"
+
+" " +++++NEOSNIPPET+++++
+" " Plugin key-mappings.
+" imap <C-K>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-K>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-K>     <Plug>(neosnippet_expand_target)
 "
-" " For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-"Enable snipMate compatability
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-let g:neosnippet#snippets_directory='~/.vim/bundle/bootstrap-snippets/snippets'
-let g:neosnippet#snippets_directory='~/.vim/bundle/mysnipps/snippets'
+" " SuperTab like snippets behavior.
+"  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: "\<TAB>"
+" "
+" " " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
+" "Enable snipMate compatability
+" let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" let g:neosnippet#snippets_directory='~/.vim/bundle/bootstrap-snippets/snippets'
+" let g:neosnippet#snippets_directory='~/.vim/bundle/mysnipps/snippets'
 " ========================================
 
 "+++++ javascript syntax libraries+++++
@@ -287,7 +304,7 @@ let g:used_javascript_libs = 'underscore, jquery, sugar.js, react, angularjs'
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
 nmap <Space> <Plug>SneakForward
-"
+
 "++++Syntastic+++++
 "disable folding per vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -371,7 +388,7 @@ imap <C-a> <esc>wa
 
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
-nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 30<CR>
+nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
 map ,n :NERDTreeTabsToggle<CR>
 
 "Move back and forth hrough previous and next buffers
@@ -395,7 +412,6 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-j> <C-w>j
 
-nnoremap ,,w <C-w>w
 " Make gf (go to file) create the file, if not existent
 nnoremap gf :e<cfile><CR>
 nnoremap <C-w>f :sp +e<cfile><CR>
