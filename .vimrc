@@ -37,6 +37,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-obsession'
 
 " =============== Language and Syntax ==================
 Plugin 'scrooloose/syntastic'
@@ -157,7 +158,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 15
+let g:NERDTreeWinSize = 22
 
 "+++++ Solarized +++++
 set background=dark
@@ -419,6 +420,8 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 
 " Zoom in
 map <silent> ,gz <C-w>o
+" Close buffer with nerdtree
+nnoremap <leader>bd :bp<cr>:bd #<cr>
 
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
