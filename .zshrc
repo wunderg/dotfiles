@@ -97,6 +97,6 @@ source $ZSH/oh-my-zsh.sh
 alias "zshrc=nvim ~/.zshrc"
 alias 'vimrc=nvim ~/.vimrc'
 alias 'hack=nvim ~/HackReactor/precourse/'
-alias 'snips=nvim ~/.vim/bundle/mysnipps/'
+alias 'snips=nvim ~/.vim/bundle/vim-snippets/'
 alias 'go=git checkout'
 alias 'n=nvim'

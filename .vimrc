@@ -25,8 +25,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'Shougo/neosnippet-snippets'
 Plugin 'SirVer/ultisnips'
-Bundle 'ervandew/supertab'
-" Plugin 'Shougo/neosnippet'
+Plugin 'ervandew/supertab'
+" Plugi, 'Shougo/neosnippet'
 Plugin 'justinmk/vim-sneak'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'easymotion/vim-easymotion'
@@ -233,7 +233,8 @@ nmap ,<ESC> ,,w
 nmap ,<S-ESC> ,,b
 
 "++++++ UltiSnipps +++++++
-
+let g:UltiSnipsUsePythonVersion=2
+let g:UltiSnipsListSnippetsDir = '/.vim/bundle/Av'
 " " ++++NeoComplete++++
 " let g:acp_enableAtStartup = 0
 " let g:neocomplete#enable_at_startup = 1
@@ -262,7 +263,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " ++++++YouCompleteMe+++++++
-" make YCM compatible with UltiSnips (using supertab)
+" " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
