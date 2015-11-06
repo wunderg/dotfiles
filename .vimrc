@@ -22,6 +22,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 
 " =============== Improvements ==================
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'Shougo/neosnippet-snippets'
 Plugin 'SirVer/ultisnips'
@@ -38,6 +39,7 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
+Plugin 'Raimondi/delimitMate'
 
 " =============== Language and Syntax ==================
 Plugin 'scrooloose/syntastic'
@@ -49,7 +51,6 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'floobits/floobits-neovim'
-
 call vundle#end()
 
 " ================ General Config =====================
@@ -269,7 +270,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsListSnippets="<c-e>"
 " let g:UltiSnipsJumpBackwardTrigger = "<tab>"
@@ -310,6 +311,7 @@ nmap <Space> <Plug>SneakForward
 "++++Syntastic+++++
 "disable folding per vim-markdown
 let g:vim_markdown_folding_disabled=1
+let g:syntastic_javascript_checkers = ['jshint']
 "=========Continue================
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -385,8 +387,10 @@ nnoremap ,. '.
 " type 'foo<c-a>
 "
 " the first quote will autoclose so you'll get 'foo' and hitting <c-a> will
-" put the cursor right after the quote
+" put the cursor right jafter the quote
 imap <C-a> <esc>wa
+imap <C-space> <esc>wa
+
 
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
