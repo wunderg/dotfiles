@@ -75,6 +75,7 @@ binaries=(
   rhino
   slimerjs
   tree
+  tmux
   unrar
   wget
   youtube-dl
@@ -100,7 +101,6 @@ apps=(
   # work
   rowanj-gitx
   iterm2
-  tmux
   sublime-text3
   virtualbox
 
@@ -109,25 +109,25 @@ apps=(
   quicksilver
   nvalt
   appcleaner
-  osxfuse
-  1password
-  spectacle
+  # osxfuse
+  # 1password
+  # spectacle
   flash
   quicklook-json
-  macpar-deluxe
-  imageoptim
+  # macpar-deluxe
+  # imageoptim
   grandperspective
   istat-menus
   qlvideo # to display video files in finder and quick look
 
   # sharing
-  dropbox
+  # dropbox
   google-drive
 
   # browsers
   google-chrome
-  firefox-nightly
-  webkit-nightly
+  # firefox-nightly
+  # webkit-nightly
 
   # communication
   slack
@@ -139,13 +139,16 @@ apps=(
 
   # file sharing
   utorrent # needs further installation
-  unison
 )
 
 echo "Installing apps to /Applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
 brew cask cleanup
+
+echo "Installing neovim"
+
+brew install neovim/neovim/neovim
 
 echo "Installing oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -196,6 +199,12 @@ node_packages=(
 )
 npm install -g ${node_packages[@]}
 
-echo "Installing neovim"
+echo 'Getting Vundle'
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-brew install neovim/neovim/neovim
+echo 'Installing plugins'
+vim +PluginInstall +qall
+
+echo 'Installing cmake for YCM'
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer

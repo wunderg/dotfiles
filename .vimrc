@@ -18,8 +18,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs.git'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'Shougo/neocomplete'
+" Plugin 'Shougo/neocomplet
 Plugin 'tpope/vim-fugitive'
+" Plugin 'janko-m/vim-test'
 
 " =============== Improvements ==================
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -149,7 +150,13 @@ set smartcase       " ...unless we type a capital
 
 
 " ================ Plugins settings  ===========================
-
+" test.vim mappings
+" nmap <silent> <leader>c :TestNearest<CR>
+" nmap <silent> <leader>C :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
+"
 "+++++ NERDTREE+++++
 " Open nerdTree when no files were specified
 autocmd StdinReadPre * let s:std_in=1
