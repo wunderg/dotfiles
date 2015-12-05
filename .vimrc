@@ -69,6 +69,9 @@ set undofile
 " This makes vim act like all other editors, buffers can
 set hidden
 
+" xtrerm to inherit the title from vim
+set title
+
 "turn on syntax highlighting
 syntax on
 
@@ -432,8 +435,8 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 
 " Zoom in
 map <silent> ,gz <C-w>o
-" Close buffer with nerdtree
-nnoremap <leader>bd :bp<cr>:bd #<cr>
+" Close and save buffer with nerdtree
+nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
 
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
@@ -457,6 +460,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+map <leader>tl :tabs
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>

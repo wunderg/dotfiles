@@ -1,8 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/devops/floobits/wunderg/wunderg'
-let g:netrw_dirhist_2='/Users/devops/floobits/wunderg'
-let g:netrw_dirhist_3='/Users/devops/floobits/wunderg/wunderg'
-let g:netrw_dirhist_4='/Users/devops/floobits/wunderg/canttouchthis'
-let g:netrw_dirhist_5='/Users/devops/floobits/imrokas/codewars'
-let g:netrw_dirhist_6='/Users/devops/floobits/HackReactor/2016-01-precourse'
+let g:netrw_dirhist_1='/Users/devops/HackReactor/Week2/day3/2015-11-n-queens'
+let g:netrw_dirhist_2='/Users/devops/HackReactor/Week2/day3/2015-11-n-queens/src'
+let g:netrw_dirhist_3='/Users/devops/HackReactor/Week2/day5/2015-11-watchout'
+let g:netrw_dirhist_4='/Users/devops/HackReactor/Week2/day5/2015-11-watchout/client'
+let g:netrw_dirhist_5='/Users/devops/HackReactor/Week2/day5/2015-11-watchout'
+let g:netrw_dirhist_6='/Users/devops/HackReactor/Week2/day5/2015-11-watchout/client'
