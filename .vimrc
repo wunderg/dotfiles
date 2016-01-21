@@ -41,10 +41,14 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rking/ag.vim'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'mxw/vim-jsx'
 
 " =============== Language and Syntax ==================
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
-Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 
 " =============== Appearance  ==================
@@ -52,6 +56,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'floobits/floobits-neovim'
+Plugin 'vim-scripts/Son-of-Obisidian'
+
 call vundle#end()
 
 " ================ General Config =====================
@@ -188,7 +194,7 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'readonly', 'filename', 'fugitive', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
@@ -223,6 +229,9 @@ endfunction
 set laststatus=2
 set lazyredraw
 
+" REACT
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " +++++ CamelCaseMotion+++++
 map W <Plug>CamelCaseMotion_w
 map B <Plug>CamelCaseMotion_b
@@ -231,6 +240,15 @@ map E <Plug>CamelCaseMotion_e
 sunmap W
 sunmap B
 sunmap E
+
+"+++++Silver Searcher+++++
+let g:ag_working_path_mode="r"
+
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
 
 "+++++CTRLP+++++
 " We don't want to use Ctrl-p as the mapping because
@@ -312,7 +330,22 @@ let g:UltiSnipsListSnippets="<c-e>"
 
 "+++++ javascript syntax libraries+++++
 let g:used_javascript_libs = 'underscore, jquery, sugar.js, react, angularjs'
-
+"
+" Match tag always
+" Jump to other closing tag
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'javascript.jsx' : 1,
+    \}
+let g:mta_use_matchparen_group=0
+let g:mta_set_default_matchtag_color=0
+let g:javascript_enable_domhtmlcss=1
+highlight MatchTag ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+"
 "+++++ SNEAK++++
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
@@ -321,12 +354,16 @@ nmap <Space> <Plug>SneakForward
 "++++Syntastic+++++
 "disable folding per vim-markdown
 let g:vim_markdown_folding_disabled=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_javascript_checkers = ['eslint']
 "=========Continue================
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1;
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
 "automatically jump to the error when saving the file
@@ -406,6 +443,7 @@ imap <C-space> <esc>wa
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
 map ,n :NERDTreeTabsToggle<CR>
+" let g:NERDTreeWinPos = "right" nerdtree on right side
 
 "Move back and forth hrough previous and next buffers
 "with ,z and ,x

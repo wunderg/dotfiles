@@ -102,4 +102,9 @@ alias 'go=git checkout'
 alias 'n=nvim'
 alias 'gs=git status'
 alias 'gc=git commit'
-alias 'gpo = git push origin'
+alias 'gpo=git push origin'
+alias 'gpr=git pull --rebase upstream master'
+
+
+export NVM_DIR="/Users/devops/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
