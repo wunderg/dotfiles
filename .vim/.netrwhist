@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/devops/HackReactor/Week2/day3/2015-11-n-queens'
-let g:netrw_dirhist_2='/Users/devops/HackReactor/Week2/day3/2015-11-n-queens/src'
-let g:netrw_dirhist_3='/Users/devops/HackReactor/Week2/day5/2015-11-watchout'
-let g:netrw_dirhist_4='/Users/devops/HackReactor/Week2/day5/2015-11-watchout/client'
-let g:netrw_dirhist_5='/Users/devops/HackReactor/Week2/day5/2015-11-watchout'
-let g:netrw_dirhist_6='/Users/devops/HackReactor/Week2/day5/2015-11-watchout/client'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/devops/HackReactor/Week5/day3/2015-11-shortly-angular'
+let g:netrw_dirhist_2='/Users/devops/HackReactor/Week5/day3/2015-11-shortly-angular/client'
+let g:netrw_dirhist_3='/Users/devops/HackReactor/Week5/day3/2015-11-shortly-angular/client/app'
+let g:netrw_dirhist_4='/Users/devops/HackReactor/Week5/day3/2015-11-shortly-angular/client/app/links'
+let g:netrw_dirhist_5='/Users/devops/HackReactor/Week5/day5/2015-11-shortly-deploy'
+let g:netrw_dirhist_6='/Users/devops/HackReactor/Week5/day5/2015-11-shortly-deploy/app'
+let g:netrw_dirhist_7='/Users/devops/HackReactor/Week5/day5/2015-11-shortly-deploy'

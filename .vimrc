@@ -46,9 +46,10 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'mxw/vim-jsx'
 
 " =============== Language and Syntax ==================
+Plugin 'isRuslan/vim-es6'
 Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
-" Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 
 " =============== Appearance  ==================
@@ -329,7 +330,7 @@ let g:UltiSnipsListSnippets="<c-e>"
 " ========================================
 
 "+++++ javascript syntax libraries+++++
-let g:used_javascript_libs = 'underscore, jquery, sugar.js, react, angularjs'
+let g:used_javascript_libs = 'underscore, jquery, sugar.js, react, angularjs, chai, flux'
 "
 " Match tag always
 " Jump to other closing tag
@@ -344,7 +345,7 @@ let g:mta_filetypes = {
 let g:mta_use_matchparen_group=0
 let g:mta_set_default_matchtag_color=0
 let g:javascript_enable_domhtmlcss=1
-highlight MatchTag ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+highlight MatchTag ctermfg=White ctermbg=DarkGreen guifg=White guibg=DarkGreen
 "
 "+++++ SNEAK++++
 nmap f <Plug>Sneak_s
@@ -423,7 +424,7 @@ vmap ,{ c{<C-R>"}<ESC>
 map ,` ysiw`
 
 " gary bernhardt's hashrocket
-imap <c-l> <space>=><space>
+imap <c-l> <space>=>
 
 "Go to last edit location with ,.
 nnoremap ,. '.
