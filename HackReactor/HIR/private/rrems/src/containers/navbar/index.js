@@ -9,7 +9,7 @@ class Navbar extends Component {
       $('.button-collapse').sideNav({
         menuWidth: 300, // Default is 240
         edge: 'right', // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
       });
     });
   }
@@ -18,18 +18,17 @@ class Navbar extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to={`/`} className="brand-logo">PTC Portal</Link>
+          <Link to={`/`} className="brand-logo">Starter</Link>
           <a href="#" data-activates="mobile-demo" className="button-collapse">
             <i className="fa fa-align-justify"></i>
           </a>
           <ul className="right hide-on-med-and-down">
-            <li><Link to={'/add'}>Add Student</Link></li>
-            <li><a href="">Results</a></li>
+            <li><Link to={'/add'}>Add</Link></li>
             <li><Link to={'/'}>Dashboard</Link></li>
-            <li><Link to={'/guide'}>Guide</Link></li>
+            <li><Link to={'/about'}>About</Link></li>
             <li><Link to={'/resources'}>Resources</Link></li>
             <li><Link to={'/faq'}>FAQ</Link></li>
-            <li><a href="">Login</a></li>
+            <li><Link to={'/faq'}>Login</Link></li>
           </ul>
           <ul className="side-nav" id="mobile-demo">
             <li><Link to={'/add'}>Add Student</Link></li>

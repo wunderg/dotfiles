@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodo, fetchStudents } from '../../actions';
-
-import TextInput from '../text-input';
-import Students from '../students';
 
 class Home extends Component {
   constructor(props) {
@@ -12,18 +8,56 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchStudents();
   }
 
 
   render() {
     return (
       <div className="row">
-        <div className="col s12">
-          <TextInput />
+        <div className="col s4">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+          </div>
         </div>
-        <div className="col s12">
-          <Students data={ this.props.data } history={this.props.history} />
+        <div className="col s4">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+          </div>
+        </div>
+        <div className="col s4">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+          </div>
+        </div>
+        <div className="col s4">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+          </div>
+        </div>
+        <div className="col s4">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Card Title</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -35,13 +69,13 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    data: state.slocal
+    data: state
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { addTodo, fetchStudents }, dispatch);
+    {}, dispatch);
 }
 
 Home.propTypes = {
