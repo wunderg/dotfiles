@@ -1,4 +1,4 @@
-" This must be first, because it changes other options as a side effect.
+" Thismust be first, because it changes other options as a side effect.
 set nocompatible
 filetype off
 
@@ -142,6 +142,7 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
+set wildignore+=node_modules/**
 set wildignore+=*.png,*.jpg,*.gif
 
 "
@@ -159,7 +160,7 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 " ================ Mapping to Move lines  ===========================
-" To Do 
+" To Do
 " ∆ and ˚ is alt key and alt j in mac keyborard
 nnoremap <∆> :m .+1<CR>==
 nnoremap <˚> :m .-2<CR>==
@@ -168,6 +169,7 @@ inoremap <˚> <Esc>:m .-2<CR>==gi
 vnoremap <∆> :m '>+1<CR>gv=gv
 vnoremap <˚> :m '<-2<CR>gv=gv
 
+"
 " ================ Plugins settings  ===========================
 " test.vim mappings
 " nmap <silent> <leader>c :TestNearest<CR>
@@ -264,7 +266,11 @@ endif
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlP<CR>
+nnoremap <silent> ,t :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|fonts|dist)|(\.(swp|ico|git|svn))$'
+
+"" Fix command typos (stolen from Adam Katz)
+nmap ; :
 
 "+++++EasyMotion+++++
 let g:EasyMotion_keys='asdfjkoweriop'
@@ -448,7 +454,6 @@ nnoremap ,. '.
 imap <C-a> <esc>wa
 imap <C-space> <esc>wa
 
-
 " ==== NERD tree
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
@@ -485,6 +490,11 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 map <silent> ,gz <C-w>o
 " Close and save buffer with nerdtree
 nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
+nnoremap zz :w<cr>:bp<cr>:bd #<cr>
+" Save file
+imap kk <ESC><S-a>;<ESC>:w<cr>
+imap jj <ESC>:w<cr>
+map <leader>ss :w<cr>
 
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
@@ -514,6 +524,7 @@ map <leader>tl :tabs
 nmap <silent> // :nohlsearch<CR>
 
 "(v)im (c)ommand - execute current line as a vim command
+"
 nmap <silent> ,vc yy:<C-f>p<C-c><CR>
 
 "(v)im (r)eload
