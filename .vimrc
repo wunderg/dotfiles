@@ -162,13 +162,12 @@ set smartcase       " ...unless we type a capital
 " ================ Mapping to Move lines  ===========================
 " To Do
 " ∆ and ˚ is alt key and alt j in mac keyborard
-nnoremap <∆> :m .+1<CR>==
-nnoremap <˚> :m .-2<CR>==
+nnoremap <S-j> :m .+1<CR>==
+nnoremap <S-k> :m .-2<CR>==
 inoremap <∆> <Esc>:m .+1<CR>==gi
 inoremap <˚> <Esc>:m .-2<CR>==gi
 vnoremap <∆> :m '>+1<CR>gv=gv
 vnoremap <˚> :m '<-2<CR>gv=gv
-
 "
 " ================ Plugins settings  ===========================
 " test.vim mappings
