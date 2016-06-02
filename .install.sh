@@ -38,9 +38,9 @@ if test ! $(which brew); then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# echo "Setting brew permissions..."
-# chown -R $USER /usr/local/include
-# chown -R $USER /usr/local/lib/pkgconfig
+echo "Setting brew permissions..."
+chown -R $USER /usr/local/include
+chown -R $USER /usr/local/lib/pkgconfig
 
 # Inspired by http://lapwinglabs.com/blog/hacker-guide-to-setting-up-your-mac
 
@@ -159,7 +159,7 @@ wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.zshrc && mv .zsh
 echo "Customizing tmux"
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.tmux.conf && mv .tmux.conf ~/
 
-echo "Customizing NeoVim"
+echo "Customizing Vim"
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.vimrc && mv .vimrc ~/
 
 echo "Making autojump work with zsh..."
@@ -172,10 +172,8 @@ ssh-add ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/ssh
 
-# echo "Customizing OSX..."
-# https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-
-# TODO: triggers for quicksilver
+echo "Customizing OSX..."
+wget -qO- https://raw.githubusercontent.com/wunderg/dotfiles/master/.install.sh | bash
 
 echo "Installing translit..."
 wget http://www.math.tamu.edu/~comech/tools/russian-translit-keyboard-layout-mac-os-x/russian-translit.keylayout && mv russian-translit.keylayout ~/Library/Keyboard\ Layouts/
@@ -192,9 +190,10 @@ node_packages=(
   gulp
   htmlhint
   imageoptim-cli
-  jshint
+  mocha
+  eslint_d
   jscs
-  qunit
+  webpack
   watchify
 )
 npm install -g ${node_packages[@]}

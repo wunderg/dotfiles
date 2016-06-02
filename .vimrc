@@ -73,6 +73,7 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed
 set undofile
+
 " This makes vim act like all other editors, buffers can
 set hidden
 
@@ -108,7 +109,6 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
 endif
 
 " ================ Indentation ======================
-
 set autoindent
 set smartindent
 set smarttab
@@ -124,13 +124,11 @@ filetype indent on
 set list listchars=tab:\ \ ,trail:·
 
 " ================ Folds ============================
-
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
-
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
@@ -147,13 +145,11 @@ set wildignore+=*.png,*.jpg,*.gif
 
 "
 " ================ Scrolling ========================
-
 set scrolloff=11        "Start scrolling when we're 11 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
 " ================ Search ===========================
-
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
@@ -164,10 +160,11 @@ set smartcase       " ...unless we type a capital
 " ∆ and ˚ is alt key and alt j in mac keyborard
 nnoremap <S-j> :m .+1<CR>==
 nnoremap <S-k> :m .-2<CR>==
-inoremap <∆> <Esc>:m .+1<CR>==gi
-inoremap <˚> <Esc>:m .-2<CR>==gi
-vnoremap <∆> :m '>+1<CR>gv=gv
-vnoremap <˚> :m '<-2<CR>gv=gv
+" TOFIX
+" inoremap <∆> <Esc>:m .+1<CR>==gi
+" inoremap <˚> <Esc>:m .-2<CR>==gi
+" vnoremap <∆> :m '>+1<CR>gv=gv
+" vnoremap <˚> :m '<-2<CR>gv=gv
 "
 " ================ Plugins settings  ===========================
 " test.vim mappings
@@ -182,6 +179,14 @@ vnoremap <˚> :m '<-2<CR>gv=gv
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" Close and save buffer with nerdtree
+nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
+
+" +++++ NERD tree +++++
+" Open the project tree and expose current file in the nerdtree with Ctrl-\
+nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
+map ,n :NERDTreeTabsToggle<CR>
+" let g:NERDTreeWinPos = "right" nerdtree on right side
 
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
@@ -240,8 +245,7 @@ endfunction
 set laststatus=2
 set lazyredraw
 
-" REACT
-
+"+++++REACT Syntax hightliting+++++
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " +++++ CamelCaseMotion+++++
 map W <Plug>CamelCaseMotion_w
@@ -279,6 +283,7 @@ nmap ,<S-ESC> ,,b
 "++++++ UltiSnipps +++++++
 let g:UltiSnipsUsePythonVersion=2
 let g:UltiSnipsListSnippetsDir = '/.vim/bundle/Av'
+
 " " ++++NeoComplete++++
 " let g:acp_enableAtStartup = 0
 " let g:neocomplete#enable_at_startup = 1
@@ -386,7 +391,7 @@ let g:syntastic_auto_jump=0
 " General vim sanity improvements
 "don't care about warnings
 let g:syntastic_quiet_messages = {'level': 'warnings'}
-"
+
 " +++++YankRing+++++
 let g:yankring_history_file = '.yankring-history'
 nnoremap ,yr :YRShow<CR>
@@ -408,6 +413,7 @@ endfunction
 nnoremap 0 ^
 nnoremap ^ 0
 
+" +++++Surround Mappings+++++
 " ," Surround a word with "quotes"
 map ," ysiw"
 vmap ," c"<C-R>""<ESC>
@@ -453,11 +459,6 @@ nnoremap ,. '.
 imap <C-a> <esc>wa
 imap <C-space> <esc>wa
 
-" ==== NERD tree
-" Open the project tree and expose current file in the nerdtree with Ctrl-\
-nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
-map ,n :NERDTreeTabsToggle<CR>
-" let g:NERDTreeWinPos = "right" nerdtree on right side
 
 "Move back and forth hrough previous and next buffers
 "with ,z and ,x
@@ -487,8 +488,6 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 
 " Zoom in
 map <silent> ,gz <C-w>o
-" Close and save buffer with nerdtree
-nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
 nnoremap zz :w<cr>:bp<cr>:bd #<cr>
 " Save file
 imap kk <ESC><S-a>;<ESC>:w<cr>
@@ -561,4 +560,3 @@ endif
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
-
