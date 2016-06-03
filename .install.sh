@@ -170,6 +170,9 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/ssh
+git config --global core.editor /usr/bin/vim
+git config --global user.name 'wunderg'
+git config --global user.email 'oleg.umarov@gmail.com'
 
 echo "Customizing OSX..."
 wget -qO- https://raw.githubusercontent.com/wunderg/dotfiles/master/.install.sh | bash
