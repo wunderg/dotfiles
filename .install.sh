@@ -73,7 +73,6 @@ binaries=(
   pkg-config
   redis
   rhino
-  slimerjs
   tree
   tmux
   unrar
