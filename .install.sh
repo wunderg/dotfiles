@@ -160,6 +160,8 @@ echo "Customizing tmux"
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.tmux.conf && mv .tmux.conf ~/
 
 echo "Customizing Vim"
+brew uninstall vim
+brew install vim --override-system-vi --with-python3 --with-lua
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.vimrc && mv .vimrc ~/
 
 echo "Making autojump work with zsh..."
