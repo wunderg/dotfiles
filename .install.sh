@@ -73,6 +73,7 @@ binaries=(
   pkg-config
   redis
   rhino
+  reattach-to-user-namespace
   tree
   tmux
   unrar
