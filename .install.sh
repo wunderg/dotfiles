@@ -73,7 +73,7 @@ binaries=(
   pkg-config
   redis
   rhino
-  slimerjs
+  reattach-to-user-namespace
   tree
   tmux
   unrar
@@ -160,6 +160,8 @@ echo "Customizing tmux"
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.tmux.conf && mv .tmux.conf ~/
 
 echo "Customizing Vim"
+brew uninstall vim
+brew install vim --override-system-vi --with-python3 --with-lua
 wget https://raw.githubusercontent.com/wunderg/dotfiles/master/.vimrc && mv .vimrc ~/
 
 echo "Making autojump work with zsh..."
@@ -171,6 +173,9 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/ssh
+git config --global core.editor /usr/bin/vim
+git config --global user.name 'wunderg'
+git config --global user.email 'oleg.umarov@gmail.com'
 
 echo "Customizing OSX..."
 wget -qO- https://raw.githubusercontent.com/wunderg/dotfiles/master/.install.sh | bash

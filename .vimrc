@@ -73,7 +73,6 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed
-set undofile
 
 " This makes vim act like all other editors, buffers can
 set hidden
@@ -103,11 +102,9 @@ set nowb
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
-if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
-endif
 
 " ================ Indentation ======================
 set autoindent
