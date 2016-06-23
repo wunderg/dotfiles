@@ -51,6 +51,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " =============== Appearance  ==================
 Plugin 'itchyny/lightline.vim'
