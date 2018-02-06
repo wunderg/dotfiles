@@ -59,14 +59,12 @@ brew install homebrew/dupes/grep
 binaries=(
   ack
   autojump
-  cairo
   curl
   casperjs
   ffmpeg
   git
   git-extras
   grep
-  imagemagick --with-webp
   mackup
   node
   postgresql
@@ -79,7 +77,6 @@ binaries=(
   unrar
   wget
   youtube-dl
-  zopfli
   zsh
 )
 
@@ -99,7 +96,6 @@ brew tap caskroom/versions
 apps=(
 
   # work
-  rowanj-gitx
   iterm2
   sublime-text3
   virtualbox
@@ -112,33 +108,33 @@ apps=(
   # osxfuse
   # 1password
   # spectacle
-  flash
-  quicklook-json
+  # flash
+  # quicklook-json
   # macpar-deluxe
   # imageoptim
   grandperspective
   istat-menus
-  qlvideo # to display video files in finder and quick look
+  # qlvideo # to display video files in finder and quick look
 
   # sharing
   # dropbox
-  google-drive
+  # google-drive
 
   # browsers
   google-chrome
-  # firefox-nightly
-  # webkit-nightly
+  firefox-nightly
+  webkit-nightly
 
   # communication
-  slack
-  skype
+ # slack
+ # skype
 
   # entertainment
-  vlc
-  pandora
+ # vlc
+ # pandora
 
   # file sharing
-  utorrent # needs further installation
+  # utorrent # needs further installation
 )
 
 echo "Installing apps to /Applications..."
@@ -168,14 +164,14 @@ echo "Making autojump work with zsh..."
 append_to_zshrc '[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh'
 
 echo "Generating SSH keys (https://help.github.com/articles/generating-ssh-keys)..."
-ssh-keygen -t rsa -C "oleg.umarov@gmail.com"
+ssh-keygen -t rsa -C "oumarov@visa.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/ssh
 git config --global core.editor /usr/bin/vim
-git config --global user.name 'wunderg'
-git config --global user.email 'oleg.umarov@gmail.com'
+git config --global user.name 'oumarov'
+git config --global user.email 'oumarov@visa.com'
 
 echo "Customizing OSX..."
 wget -qO- https://raw.githubusercontent.com/wunderg/dotfiles/master/.install.sh | bash
@@ -191,14 +187,10 @@ node_packages=(
   bower
   browserify
   caniuse-cmd
-  grunt
-  gulp
   htmlhint
-  imageoptim-cli
   mocha
   eslint_d
   jscs
-  webpack
   watchify
 )
 npm install -g ${node_packages[@]}

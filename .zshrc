@@ -1,3 +1,7 @@
+export LC_CTYPE=en_US.UTF-8
+
+export PATH=./node_modules/.bin:$PATH:/usr/libexec
+                
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Setting Keypad info:
@@ -94,8 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias "zshrc=nvim ~/.zshrc"
-alias 'vimrc=nvim ~/.vimrc'
+alias "zshrc=vim ~/.zshrc"
+alias 'vimrc=vim ~/.vimrc'
 alias 'hack=nvim ~/HackReactor/precourse/'
 alias 'snips=nvim ~/.vim/bundle/vim-snippets/'
 alias 'go=git checkout'
@@ -105,6 +109,6 @@ alias 'gc=git commit'
 alias 'gpo=git push origin'
 alias 'gpr=git pull --rebase upstream master'
 
-
-export NVM_DIR="/Users/devops/.nvm"
+export NVM_DIR="/Users/oumarov/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+

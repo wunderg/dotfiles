@@ -1,6 +1,6 @@
 " Thismust be first, because it changes other options as a side effect.
 set nocompatible
-filetype off
+filetype plugin on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'Shougo/neocomplet
 Plugin 'tpope/vim-fugitive'
@@ -57,7 +58,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'floobits/floobits-neovim'
+" Plugin 'floobits/floobits-neovim'
 Plugin 'vim-scripts/Son-of-Obisidian'
 
 call vundle#end()
@@ -92,7 +93,7 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Highlight the line that cursor curently on
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-set cursorline
+set nocursorline
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -119,7 +120,7 @@ filetype plugin on
 filetype indent on
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+"set list listchars=tab:\ \ ,trail:·
 
 " ================ Folds ============================
 set foldmethod=indent   "fold based on indent
@@ -172,7 +173,26 @@ nnoremap <S-k> :m .-2<CR>==
 " nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
 "
+"+++++ NERDCOMMENTER+++++
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"
+" " Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+"
+" " Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+"
+"
+" " Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 "+++++ NERDTREE+++++
+"
 " Open nerdTree when no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -267,7 +287,8 @@ endif
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlPMRU<CR>
+"nnoremap <silent> ,t :CtrlPBuffer<CR>
+"let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|fonts|dist)|(\.(swp|ico|git|svn))$'
 
 "" Fix command typos (stolen from Adam Katz)
@@ -279,7 +300,7 @@ nmap ,<ESC> ,,w
 nmap ,<S-ESC> ,,b
 
 "++++++ UltiSnipps +++++++
-let g:UltiSnipsUsePythonVersion=2
+let g:UltiSnipsUsePythonVersion=3
 let g:UltiSnipsListSnippetsDir = '/.vim/bundle/Av'
 
 " " ++++NeoComplete++++
@@ -490,6 +511,7 @@ nnoremap zz :w<cr>:bp<cr>:bd #<cr>
 " Save file
 imap kk <ESC><S-a>;<ESC>:w<cr>
 imap jj <ESC>:w<cr>
+imap jk <ESC><cr>
 map <leader>ss :w<cr>
 
 " Create window splits easier. The default
@@ -558,3 +580,13 @@ endif
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
+let g:loaded_matchparen=1
+set nolist
+" if number column doesn't make sense to you, just don't render it
+" lazy drawing
+set lazyredraw
+set ttyfast
+set encoding=utf-8
+set autoread
+au FocusGained,BufEnter * :checktime

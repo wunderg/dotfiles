@@ -175,7 +175,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+defaults write com.apple.screencapture location -string "${HOME}/Desktop/screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -355,9 +355,6 @@ defaults write com.apple.dock showhidden -bool true
 
 # Reset Launchpad, but keep the desktop wallpaper intact
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
-
-# Add iOS Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app"
 
 ###############################################################################
 # Safari & WebKit                                                             #
