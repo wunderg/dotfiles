@@ -12,6 +12,9 @@ let mapleader=","
 set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" =============== Typescript  ==================
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 " =============== Core  ==================
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -118,14 +121,26 @@ set expandtab
 
 filetype plugin on
 filetype indent on
+autocmd BufNewFile,BufRead *.ts*,*.jsx set filetype=typescript.tsx
+" dark red
+hi tsxTagName guifg=#E06C75
+
+" orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
 
 " Display tabs and trailing spaces visually
 "set list listchars=tab:\ \ ,trail:·
 
 " ================ Folds ============================
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+set foldmethod=indent
+set foldlevel=1
+set foldclose=all
 
 " ================ Completion =======================
 set wildmode=list:longest
@@ -511,7 +526,6 @@ nnoremap zz :w<cr>:bp<cr>:bd #<cr>
 " Save file
 imap kk <ESC><S-a>;<ESC>:w<cr>
 imap jj <ESC>:w<cr>
-imap jk <ESC><cr>
 map <leader>ss :w<cr>
 
 " Create window splits easier. The default

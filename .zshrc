@@ -2,6 +2,16 @@ export LC_CTYPE=en_US.UTF-8
 
 export PATH=./node_modules/.bin:$PATH:/usr/libexec
                 
+export https_proxy=userproxy.visa.com:443
+export http_proxy=userproxy.visa.com:80
+export HTTPS_PROXY=userproxy.visa.com:443
+export HTTP_PROXY=userproxy.visa.com:80
+export ALL_PROXY=userproxy.visa.com:80
+export ftp_proxy=userproxy.visa.com:80
+export JAVA_VERSION='1.8'
+export JAVA_HOME=`/usr/libexec/java_home -v $JAVA_VERSION`
+export JDK_HOME=$JAVA_HOME
+export JRE_HOME=$JAVA_HOME/jre
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Setting Keypad info:
@@ -109,6 +119,11 @@ alias 'gc=git commit'
 alias 'gpo=git push origin'
 alias 'gpr=git pull --rebase upstream master'
 
+alias firewallz="TELNET 10.199.56.20 259"
+
 export NVM_DIR="/Users/oumarov/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
