@@ -219,6 +219,8 @@ nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
 map ,n :NERDTreeTabsToggle<CR>
+map ,v :NERDTree<CR>
+let NERDTreeQuitOnOpen=1
 " let g:NERDTreeWinPos = "right" nerdtree on right side
 
 " Make nerdtree look nice
@@ -275,6 +277,7 @@ function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != expand('%') ? expand('%') : '[NoName]')
 endfunction
+
 set laststatus=2
 set lazyredraw
 
@@ -302,6 +305,7 @@ endif
 " We don't want to use Ctrl-p as the mapping because
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
+let g:ctrlp_max_files=0
 "nnoremap <silent> ,t :CtrlPBuffer<CR>
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|fonts|dist)|(\.(swp|ico|git|svn))$'

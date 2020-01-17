@@ -1,13 +1,14 @@
 export LC_CTYPE=en_US.UTF-8
 
 export PATH=./node_modules/.bin:$PATH:/usr/libexec
-                
-export https_proxy=userproxy.visa.com:443
-export http_proxy=userproxy.visa.com:80
-export HTTPS_PROXY=userproxy.visa.com:443
-export HTTP_PROXY=userproxy.visa.com:80
-export ALL_PROXY=userproxy.visa.com:80
-export ftp_proxy=userproxy.visa.com:80
+export EDITOR=vim
+export NODE_TLS_REJECT_UNAUTHORIZED=0               
+#export https_proxy=userproxy.visa.com:443
+#export http_proxy=userproxy.visa.com:80
+#export HTTPS_PROXY=userproxy.visa.com:443
+#export HTTP_PROXY=userproxy.visa.com:80
+#export ALL_PROXY=userproxy.visa.com:80
+#export ftp_proxy=userproxy.visa.com:80
 export JAVA_VERSION='1.8'
 export JAVA_HOME=`/usr/libexec/java_home -v $JAVA_VERSION`
 export JDK_HOME=$JAVA_HOME
@@ -56,7 +57,7 @@ ZSH_THEME="sorin"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -110,14 +111,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias "zshrc=vim ~/.zshrc"
 alias 'vimrc=vim ~/.vimrc'
-alias 'hack=nvim ~/HackReactor/precourse/'
-alias 'snips=nvim ~/.vim/bundle/vim-snippets/'
 alias 'go=git checkout'
-alias 'n=nvim'
 alias 'gs=git status'
 alias 'gc=git commit'
 alias 'gpo=git push origin'
 alias 'gpr=git pull --rebase upstream master'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias mux="tmuxinator"
 
 alias firewallz="TELNET 10.199.56.20 259"
 
@@ -125,5 +126,6 @@ export NVM_DIR="/Users/oumarov/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
