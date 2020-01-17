@@ -47,8 +47,9 @@ Plugin 'tpope/vim-obsession'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'Valloric/MatchTagAlways'
-Plugin 'mxw/vim-jsx'
-
+"Plugin 'mxw/vim-jsx'
+Plugin 'yuezk/vim-js'
+Plugin 'maxmellon/vim-jsx-pretty'
 " =============== Language and Syntax ==================
 Plugin 'isRuslan/vim-es6'
 Plugin 'pangloss/vim-javascript'
@@ -96,6 +97,7 @@ autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Highlight the line that cursor curently on
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 set nocursorline
 " ================ Turn Off Swap Files ==============
 
@@ -139,8 +141,8 @@ hi tsxAttrib guifg=#F8BD7F cterm=italic
 
 " ================ Folds ============================
 set foldmethod=indent
-set foldlevel=1
-set foldclose=all
+set foldlevel=2
+"set foldclose=all
 
 " ================ Completion =======================
 set wildmode=list:longest
@@ -219,7 +221,7 @@ nnoremap <leader>bd :w<cr>:bp<cr>:bd #<cr>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeTabsToggle<CR>:vertical res 22<CR>
 map ,n :NERDTreeTabsToggle<CR>
-map ,v :NERDTree<CR>
+ map <leader>v :NERDTreeFind<cr>
 let NERDTreeQuitOnOpen=1
 " let g:NERDTreeWinPos = "right" nerdtree on right side
 
@@ -306,10 +308,15 @@ endif
 " it interferes with YankRing (paste, then hit ctrl-p)
 let g:ctrlp_map = ',t'
 let g:ctrlp_max_files=0
+let g:ctrlp_match_current_file = 1
+let g:ctrlp_mruf_max = 250
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
 "nnoremap <silent> ,t :CtrlPBuffer<CR>
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|fonts|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_mruf_case_sensitive = 1
 
+let g:ctrlp_open_new_file = 't'
 "" Fix command typos (stolen from Adam Katz)
 nmap ; :
 
